@@ -1,0 +1,17 @@
+CREATE TABLE "Dogs" (
+	"id" INT NOT NULL,
+	"name" NVARCHAR(255) NOT NULL COLLATE 'SQL_Latin1_General_CP1_CI_AS',
+	"color" NVARCHAR(255) NOT NULL COLLATE 'SQL_Latin1_General_CP1_CI_AS',
+	"tail_length" FLOAT NOT NULL,
+	"weight" FLOAT NOT NULL,
+	"createdAt" DATETIMEOFFSET NOT NULL,
+	"updatedAt" DATETIMEOFFSET NOT NULL,
+	PRIMARY KEY ("id")
+);
+
+INSERT INTO "Dogs" ("id", "name", "color", "tail_length", "weight", "createdAt", "updatedAt") 
+VALUES (1, 'Retriver', 'red', 77, 22, '2023-06-18 05:50:11.3550000 +00:00', '2023-06-18 05:50:11.3550000 +00:00');
+
+
+INSERT INTO "Dogs" ("id", "name", "color", "tail_length", "weight", "createdAt", "updatedAt") 
+VALUES (5, 'Shelty', 'brown', 77, 26, '2023-06-18 21:15:40.2760000 +00:00', '2023-06-18 21:15:40.2760000 +00:00');

@@ -1,0 +1,17 @@
+{
+  "dbName": "animalsDB",
+  "dbConfig": {
+    "server": "localhost",
+    "authentication": {
+      "type": "default"
+    },
+    "options": {
+      "encrypt": false,
+      "validateBulkLoadParameters": false,
+      "trustServerCertificate": true
+    },
+    "corsOptions": {
+      "origin": "http://localhost:8081"
+    }
+  }
+}
