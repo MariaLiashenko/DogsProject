@@ -4,7 +4,7 @@ const app = express();
 const config = require("./config/config.json");
 const corsOptions = config.corsOptions;
 const Sequelize = require("sequelize");
-const { dbName, dbConfig } = require("./config/config.json");
+
 require("dotenv").config();
 
 app.use(cors(corsOptions));
@@ -12,12 +12,12 @@ app.use(cors(corsOptions));
 module.exports = db = {};
 
 initialize();
-
+const dogroutes = require("./routes/dog");
 app.use(express.json());
 
 async function initialize() {
     const dialect = "mssql";
-    const host = dbConfig.server;
+    const host = config.dbConfig.server;
     const userName = process.env.Name;
     const password = process.env.password;
 
@@ -29,7 +29,7 @@ async function initialize() {
 
     while (!connected && retries < maxRetries) {
         try {
-            sequelize = new Sequelize(dbName, userName, password, { host, dialect });
+            sequelize = new Sequelize(config.dbName, userName, password, { host, dialect });
             connected = true;
         } catch (error) {
             console.error(`Database connection error: ${error.message}`);
@@ -49,8 +49,6 @@ async function initialize() {
 
     await sequelize.sync({ alter: true });
 }
-
-const dogroutes = require("./routes/dog");
 
 app.get("/ping", (req, res) => {
     res.json({ message: "Dogshouseservice.Version1.0.1" });
